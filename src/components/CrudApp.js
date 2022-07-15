@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import CrudForm from "./CrudForm";
+import CrudTable from "./CrudTable";
 
 const initialDb = [
   {
@@ -29,11 +31,49 @@ const initialDb = [
 ];
 
 const CrudApp = () => {
+  const [db, setDb] = useState(initialDb);
+  const [dataToEdit, setDataToEdit] = useState(null);
+
+  const createData = (data) => {
+    data.id = Date.now();
+    //console.log(data);
+    setDb([...db, data]);
+  };
+
+  const updateData = (data) => {
+    let newData = db.map((el) => (el.id === data.id ? data : el));
+    setDb(newData);
+  };
+
+  const deleteData = (id) => {
+    let idDelete = window.confirm(
+      `¿Estás seguro de eliminar el registro nº ${id} ?`
+    );
+
+    if (idDelete) {
+      let newData = db.filter((el) => el.id !== id);
+      setDb(newData);
+    } else {
+      return;
+    }
+  };
+
   return (
     <div>
       <h3>Crud App</h3>
-      <form></form>
-      <table></table>
+      <article className="grid-1-2">
+        <CrudForm
+          createData={createData}
+          updateData={updateData}
+          dataToEdit={dataToEdit}
+          setDataToEdit={setDataToEdit}
+        />
+        <CrudTable
+          data={db}
+          setDataToEdit={setDataToEdit}
+          deleteData={deleteData}
+        />
+      </article>
     </div>
   );
 };
