@@ -1,5 +1,6 @@
 import React from "react";
 import CrudTableRow from "./CrudTableRow";
+import Message from "./Message";
 
 const CrudTable = ({ data, setDataToEdit, deleteData }) => {
   return (
@@ -8,17 +9,14 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
       <table>
         <thead>
           <tr>
+            <td></td>
             <th>Nombre</th>
-            <th>Constelación</th>
+            <th>Películas</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {data.length === 0 ? (
-            <tr>
-              <td colSpan="3">Sin Datos</td>
-            </tr>
-          ) : (
+          {data.length > 0 ? (
             data.map((el) => (
               <CrudTableRow
                 key={el.id}
@@ -27,6 +25,17 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
                 deleteData={deleteData}
               />
             ))
+          ) : (
+            <tr>
+              <td colSpan="4">
+                <Message
+                  msg={` Tabla sin Datos.
+                   Probable desconexión. 
+                   Recargar o intentar más tarde `}
+                  bgColor="#888"
+                />
+              </td>
+            </tr>
           )}
         </tbody>
       </table>

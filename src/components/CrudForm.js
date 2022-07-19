@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
 const initialForm = {
-  name: "",
-  constellation: "",
   id: null,
+  nombre: "",
+  peliculas: "",
+  foto: "./assets/sinfoto.jpg",
 };
 
 const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
@@ -27,7 +28,7 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.constellation) {
+    if (!form.nombre || !form.peliculas) {
       alert("Datos incompletos");
       return;
     }
@@ -52,17 +53,17 @@ const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
+          name="nombre"
           placeholder="Nombre"
           onChange={handleChange}
-          value={form.name}
+          value={form.nombre}
         />
         <input
           type="text"
-          name="constellation"
-          placeholder="Constelación"
+          name="peliculas"
+          placeholder="Películas"
           onChange={handleChange}
-          value={form.constellation}
+          value={form.peliculas}
         />
         <input type="submit" value="Enviar" />
         <input type="reset" value="Limpiar" onClick={handleReset} />
