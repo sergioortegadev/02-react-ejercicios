@@ -7,6 +7,7 @@ const SelectList = ({ title, url, handleChange }) => {
   console.log(data, error, loading);
 
   if (!data) return null;
+
   if (error) {
     return (
       <Message
@@ -18,7 +19,7 @@ const SelectList = ({ title, url, handleChange }) => {
 
   let id = `select-${title}`;
   let label = title.charAt(0).toUpperCase() + title.slice(1) + " "; // tomo title y extraigo el primer caracter, posicion cero con el método charAt(), y luego lo paso a mayúsculas con. Después concateno: lo que le corto a title desde el segundo caracter, la posición 1, con el método slice(), todo lo que queda del string title. Al ultimo un espacio.
-  let options = data[title];
+  let options = data.response[title]; // Usamos title para extraer el response que corresponde (estado, municipios, y colonia), en lugar de hacerlo tres veces, una por estado, otra por municipio y otra por colonia. Reducimos así la cantidad de código.
   console.log(options);
 
   return (
@@ -27,8 +28,7 @@ const SelectList = ({ title, url, handleChange }) => {
       {loading && <Loader />}
       <select name={id} id={id} onChange={handleChange}>
         <option value=""> seleccionar {title}</option>
-        {data &&
-          options.map((el) => <option value={el.nombre}>{el.nombre}</option>)}
+        {data && options.map((el) => <option value={el}>{el}</option>)}
       </select>
     </>
   );

@@ -4,14 +4,16 @@ import SelectList from "./SelectList";
 const SelectsAnidados = () => {
   const [state, setState] = useState("");
   const [town, setTown] = useState("");
+  const [suburb, setSuburb] = useState("");
 
+  const TOKEN = "pruebas"; // TOKEN jonmircha: d81a7ac7-976d-4e1e-b7d3-b1979d791b6c
   return (
     <div className="select-anidados">
       <h3>Select Anidados</h3>
-      <h4>Argentina</h4>
+      <h4> + México + </h4>
       <SelectList
-        title="provincias"
-        url="https://apis.datos.gob.ar/georef/api/provincias"
+        title="estado"
+        url={`https://api.copomex.com/query/get_estados?token=${TOKEN}`}
         handleChange={(e) => {
           setState(e.target.value);
         }}
@@ -19,9 +21,18 @@ const SelectsAnidados = () => {
       {state && (
         <SelectList
           title="municipios"
-          url={`https://apis.datos.gob.ar/georef/api/municipios?provincia=${state}&aplanar&max=5000`}
+          url={`https://api.copomex.com/query/get_municipio_por_estado/${state}?token=${TOKEN}`}
           handleChange={(e) => {
             setTown(e.target.value);
+          }}
+        />
+      )}
+      {town && (
+        <SelectList
+          title="colonia"
+          url={`https://api.copomex.com/query/get_colonia_por_municipio/${town}?token=${TOKEN}`}
+          handleChange={(e) => {
+            setSuburb(e.target.value);
           }}
         />
       )}
@@ -29,7 +40,7 @@ const SelectsAnidados = () => {
 
       <pre>
         <code>
-          {state} - {town}
+          {state} - {town} - {suburb}
         </code>
       </pre>
     </div>
