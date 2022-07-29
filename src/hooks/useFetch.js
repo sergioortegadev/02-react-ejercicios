@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+// Hoop personalizado que ejecuta la petición (Fetch) en una función de efecto (useEffect), y me devuelve: {data, error, y loading (estado de carga)}. Nos sirve para que el componente no tenga tantas líneas de código.
 export const useFetch = (url) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);

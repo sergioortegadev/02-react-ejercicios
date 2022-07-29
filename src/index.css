@@ -60,6 +60,30 @@ hr {
   margin: 2rem auto;
 }
 
+label {
+  padding: 0.5rem 0.7rem;
+  margin: 0 0 0.5rem 0;
+  display: inline-block;
+  color: #888;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+}
+
+select {
+  border: thin solid #dedede;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0 0.5rem 0.5rem 0.5rem;
+  display: block;
+  width: 97%;
+  color: #888;
+  font-size: 1rem;
+  line-height: 1;
+  background-color: transparent;
+  cursor: pointer;
+}
+
 table {
   border-spacing: 0;
   border-collapse: collapse;
