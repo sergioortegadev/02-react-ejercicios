@@ -1,6 +1,6 @@
 import React from "react";
-// import CrudApi from "./components/CrudApi";
-// import CrudApp from "./components/CrudApp";
+import CrudApi from "./components/CrudApi";
+import CrudApp from "./components/CrudApp";
 import SelectsAnidados from "./components/SelectsAnidados";
 
 function App() {
@@ -9,10 +9,10 @@ function App() {
       <h1>EJERCICIOS con React</h1>
       <hr />
       <SelectsAnidados />
-      {/*  <hr />
+      <hr />
       <CrudApi />
       <hr />
-      <CrudApp /> */}
+      <CrudApp />
     </div>
   );
 }
