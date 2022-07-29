@@ -3,11 +3,18 @@ html {
   font-size: 16px;
   font-family: sans-serif;
 }
+body {
+  background-color: rgb(30, 33, 39);
+  color: rgb(210, 217, 223);
+}
 
 *,
 *:after,
 *::before {
   box-sizing: inherit;
+}
+h1 {
+  text-align: center;
 }
 
 input[type="text"],
@@ -67,12 +74,14 @@ td {
 }
 
 .caja-gris {
-  background-color: rgb(163, 188, 204);
+  background-color: rgb(54, 71, 82);
   border-radius: 15px;
   padding: 0.25rem 1.5rem;
   margin: 2rem;
 }
-
+.select-anidados {
+  text-align: center;
+}
 @media screen and (min-width: 1024px) {
   .grid-1-2 {
     display: grid;
