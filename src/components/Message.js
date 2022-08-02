@@ -10,6 +10,7 @@ const Message = ({ msg, bgColor }) => {
     fontWeight: "bold",
     backgroundColor: bgColor,
     borderRadius: "15px",
+    transition: "opacity 1s linear",
   };
 
   return (
